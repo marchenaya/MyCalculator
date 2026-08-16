@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MyCalculator</string>
+
+    <string name="display_placeholder">0</string>
+
+    <string name="key_clear">AC</string>
+    <string name="key_delete">⌫</string>
+    <string name="key_decimal_separator">.</string>
+    <string name="key_equals">=</string>
+    <string name="key_left_parenthesis">(</string>
+    <string name="key_right_parenthesis">)</string>
+
+    <string name="cd_key_clear">Clear the expression</string>
+    <string name="cd_key_delete">Delete the last character</string>
+    <string name="cd_key_decimal_separator">Decimal separator</string>
+    <string name="cd_key_equals">Calculate the result</string>
+    <string name="cd_key_add">Plus</string>
+    <string name="cd_key_subtract">Minus</string>
+    <string name="cd_key_multiply">Times</string>
+    <string name="cd_key_divide">Divided by</string>
+    <string name="cd_key_left_parenthesis">Open parenthesis</string>
+    <string name="cd_key_right_parenthesis">Close parenthesis</string>
+</resources>
