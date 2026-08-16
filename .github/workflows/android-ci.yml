@@ -26,14 +26,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # Assumes the ktlint Gradle plugin is applied to the project.
-      # ktlintFormat auto-fixes style issues; ktlintCheck fails the build
-      # if formatting isn't clean. In CI, formatting can't be pushed back
-      # automatically, so we run format then check to ensure everything
-      # is actually compliant (swap for detekt/Spotless tasks if you use those instead).
-      - name: Run ktlint format
-        run: ./gradlew ktlintFormat
-
       - name: Run ktlint check
         run: ./gradlew ktlintCheck
 
@@ -128,13 +120,14 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-34
+          key: avd-34-x86_64
 
       - name: Create AVD snapshot for caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
+          arch: x86_64
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
@@ -144,6 +137,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
+          arch: x86_64
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
