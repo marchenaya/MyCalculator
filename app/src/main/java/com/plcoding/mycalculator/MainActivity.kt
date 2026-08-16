@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     CalculatorRoot(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(innerPadding)
+                            .padding(innerPadding),
                     )
                 }
             }

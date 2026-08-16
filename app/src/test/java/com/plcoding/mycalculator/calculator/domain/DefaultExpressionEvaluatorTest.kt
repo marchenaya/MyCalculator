@@ -6,12 +6,12 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import java.math.BigDecimal
+import java.util.Locale
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import java.math.BigDecimal
-import java.util.Locale
 
 /**
  * The evaluator has a single entry point and no collaborators, so every break vector has to
@@ -206,8 +206,8 @@ class DefaultExpressionEvaluatorTest {
         @ValueSource(
             strings = [
                 "", "5+", "5−", "5×", "5÷", "+5", "×5", "÷5", "−", "(", "()", "(5+)",
-                "5++3", "5+×3", ")"
-            ]
+                "5++3", "5+×3", ")",
+            ],
         )
         fun `an expression with a missing operand has no result`(expression: String) {
             assertThat(evaluator.evaluate(expression)).isNull()
@@ -264,8 +264,8 @@ class DefaultExpressionEvaluatorTest {
                 "1+😀",
                 "5😀",
                 "👍🏽",
-                "1+👨‍👩‍👧‍👦+2"
-            ]
+                "1+👨‍👩‍👧‍👦+2",
+            ],
         )
         fun `emoji have no result`(expression: String) {
             assertThat(evaluator.evaluate(expression)).isNull()

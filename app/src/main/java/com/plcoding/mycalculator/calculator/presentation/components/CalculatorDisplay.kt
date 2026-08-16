@@ -39,12 +39,12 @@ import com.plcoding.mycalculator.ui.theme.MyCalculatorTheme
 internal fun CalculatorDisplay(
     expression: String,
     result: String?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.End,
-        verticalArrangement = Arrangement.Bottom
+        verticalArrangement = Arrangement.Bottom,
     ) {
         Text(
             text = expression.ifEmpty { stringResource(R.string.display_placeholder) },
@@ -59,12 +59,12 @@ internal fun CalculatorDisplay(
             softWrap = false,
             maxLines = 1,
             // Reversed so the caret end of a long expression is what stays in view.
-            modifier = Modifier.horizontalScroll(rememberScrollState(), reverseScrolling = true)
+            modifier = Modifier.horizontalScroll(rememberScrollState(), reverseScrolling = true),
         )
         AnimatedVisibility(
             visible = result != null,
             enter = fadeIn() + slideInVertically { it / 2 },
-            exit = fadeOut() + slideOutVertically { it / 2 }
+            exit = fadeOut() + slideOutVertically { it / 2 },
         ) {
             Text(
                 text = result.orEmpty(),
@@ -73,7 +73,7 @@ internal fun CalculatorDisplay(
                 textAlign = TextAlign.End,
                 softWrap = false,
                 maxLines = 1,
-                modifier = Modifier.horizontalScroll(rememberScrollState(), reverseScrolling = true)
+                modifier = Modifier.horizontalScroll(rememberScrollState(), reverseScrolling = true),
             )
         }
     }
@@ -89,7 +89,7 @@ private fun CalculatorDisplayEmptyPreview() {
             result = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
         )
     }
 }
@@ -103,7 +103,7 @@ private fun CalculatorDisplayTypingPreview() {
             result = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
         )
     }
 }
@@ -118,7 +118,7 @@ private fun CalculatorDisplayWithResultPreview() {
             result = "528",
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
         )
     }
 }
@@ -132,7 +132,7 @@ private fun CalculatorDisplayLongExpressionPreview() {
             result = "9876543.21",
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
         )
     }
 }
@@ -146,7 +146,7 @@ private fun CalculatorDisplayWidePreview() {
             result = "528",
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
         )
     }
 }

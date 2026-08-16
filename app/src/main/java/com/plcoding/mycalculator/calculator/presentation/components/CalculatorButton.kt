@@ -27,7 +27,7 @@ enum class CalculatorButtonStyle {
     OPERATOR,
     ACTION,
     DESTRUCTIVE,
-    ACCENT
+    ACCENT,
 }
 
 /**
@@ -44,7 +44,7 @@ internal fun CalculatorButton(
     modifier: Modifier = Modifier,
     style: CalculatorButtonStyle = CalculatorButtonStyle.NUMBER,
     contentDescription: String? = null,
-    enabled: Boolean = true
+    enabled: Boolean = true,
 ) {
     FilledTonalButton(
         onClick = onClick,
@@ -53,7 +53,7 @@ internal fun CalculatorButton(
         shape = RoundedCornerShape(KeyCornerRadius),
         colors = style.buttonColors(),
         elevation = null,
-        contentPadding = PaddingValues(0.dp)
+        contentPadding = PaddingValues(0.dp),
     ) {
         Text(
             text = symbol,
@@ -63,7 +63,7 @@ internal fun CalculatorButton(
                 Modifier.clearAndSetSemantics { this.contentDescription = contentDescription }
             } else {
                 Modifier
-            }
+            },
         )
     }
 }
@@ -72,23 +72,23 @@ internal fun CalculatorButton(
 private fun CalculatorButtonStyle.buttonColors(): ButtonColors = when (this) {
     CalculatorButtonStyle.NUMBER -> ButtonDefaults.filledTonalButtonColors(
         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-        contentColor = MaterialTheme.colorScheme.onSurface
+        contentColor = MaterialTheme.colorScheme.onSurface,
     )
     CalculatorButtonStyle.OPERATOR -> ButtonDefaults.filledTonalButtonColors(
         containerColor = MaterialTheme.colorScheme.secondaryContainer,
-        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
     )
     CalculatorButtonStyle.ACTION -> ButtonDefaults.filledTonalButtonColors(
         containerColor = MaterialTheme.colorScheme.surfaceContainer,
-        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+        contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
     )
     CalculatorButtonStyle.DESTRUCTIVE -> ButtonDefaults.filledTonalButtonColors(
         containerColor = MaterialTheme.colorScheme.errorContainer,
-        contentColor = MaterialTheme.colorScheme.onErrorContainer
+        contentColor = MaterialTheme.colorScheme.onErrorContainer,
     )
     CalculatorButtonStyle.ACCENT -> ButtonDefaults.filledTonalButtonColors(
         containerColor = MaterialTheme.colorScheme.primary,
-        contentColor = MaterialTheme.colorScheme.onPrimary
+        contentColor = MaterialTheme.colorScheme.onPrimary,
     )
 }
 
@@ -105,7 +105,7 @@ private fun CalculatorButtonStylesPreview() {
                     symbol = "7",
                     onClick = {},
                     style = style,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
                 )
             }
         }
@@ -121,7 +121,7 @@ private fun CalculatorButtonDisabledPreview() {
             onClick = {},
             style = CalculatorButtonStyle.ACCENT,
             enabled = false,
-            modifier = Modifier.height(80.dp)
+            modifier = Modifier.height(80.dp),
         )
     }
 }
@@ -134,7 +134,7 @@ private fun CalculatorButtonLargeFontPreview() {
             symbol = "÷",
             onClick = {},
             style = CalculatorButtonStyle.OPERATOR,
-            modifier = Modifier.height(80.dp)
+            modifier = Modifier.height(80.dp),
         )
     }
 }

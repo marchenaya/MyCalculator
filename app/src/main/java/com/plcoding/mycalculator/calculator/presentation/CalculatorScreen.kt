@@ -19,14 +19,14 @@ import com.plcoding.mycalculator.ui.theme.MyCalculatorTheme
 @Composable
 fun CalculatorRoot(
     modifier: Modifier = Modifier,
-    viewModel: CalculatorViewModel = viewModel(factory = CalculatorViewModel.Factory)
+    viewModel: CalculatorViewModel = viewModel(factory = CalculatorViewModel.Factory),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     CalculatorScreen(
         state = state,
         onAction = viewModel::onAction,
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -34,18 +34,18 @@ fun CalculatorRoot(
 fun CalculatorScreen(
     state: CalculatorState,
     onAction: (CalculatorAction) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier.padding(ScreenPadding)
+        modifier = modifier.padding(SCREEN_PADDING),
     ) {
         CalculatorDisplay(
             expression = state.expression,
             result = state.result,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(DisplayWeight)
-                .padding(bottom = ScreenPadding)
+                .weight(DISPLAY_WEIGHT)
+                .padding(bottom = SCREEN_PADDING),
         )
         CalculatorKeypad(
             onDigitClick = { onAction(CalculatorAction.OnDigitClick(it)) },
@@ -61,14 +61,14 @@ fun CalculatorScreen(
             isCalculateEnabled = state.canCalculate,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(KeypadWeight)
+                .weight(KEYPAD_WEIGHT),
         )
     }
 }
 
-private val ScreenPadding = 16.dp
-private const val DisplayWeight = 1f
-private const val KeypadWeight = 2.4f
+private val SCREEN_PADDING = 16.dp
+private const val DISPLAY_WEIGHT = 1f
+private const val KEYPAD_WEIGHT = 2.4f
 
 @Preview(name = "Empty")
 @Preview(name = "Empty dark", uiMode = UI_MODE_NIGHT_YES)
@@ -78,7 +78,7 @@ private fun CalculatorScreenEmptyPreview() {
         CalculatorScreen(
             state = CalculatorState(),
             onAction = {},
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
@@ -90,7 +90,7 @@ private fun CalculatorScreenTypingPreview() {
         CalculatorScreen(
             state = CalculatorState(expression = "128"),
             onAction = {},
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
@@ -103,7 +103,7 @@ private fun CalculatorScreenWithResultPreview() {
         CalculatorScreen(
             state = CalculatorState(expression = "(128+4)×16", result = "2112"),
             onAction = {},
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
@@ -115,10 +115,10 @@ private fun CalculatorScreenLongExpressionPreview() {
         CalculatorScreen(
             state = CalculatorState(
                 expression = "123456.789×(987654÷12+4444)−999",
-                result = "10162034373.2"
+                result = "10162034373.2",
             ),
             onAction = {},
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
@@ -131,7 +131,7 @@ private fun CalculatorScreenSizePreview() {
         CalculatorScreen(
             state = CalculatorState(expression = "42÷7", result = "6"),
             onAction = {},
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }

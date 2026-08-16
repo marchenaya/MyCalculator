@@ -38,11 +38,11 @@ internal fun CalculatorKeypad(
     isDeleteEnabled: Boolean,
     isCloseParenthesisEnabled: Boolean,
     isCalculateEnabled: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(KeySpacing)
+        verticalArrangement = Arrangement.spacedBy(KeySpacing),
     ) {
         KeyRow {
             CalculatorButton(
@@ -50,14 +50,14 @@ internal fun CalculatorKeypad(
                 onClick = onClearClick,
                 style = CalculatorButtonStyle.DESTRUCTIVE,
                 contentDescription = stringResource(R.string.cd_key_clear),
-                modifier = keyModifier()
+                modifier = keyModifier(),
             )
             CalculatorButton(
                 symbol = stringResource(R.string.key_left_parenthesis),
                 onClick = onLeftParenthesisClick,
                 style = CalculatorButtonStyle.ACTION,
                 contentDescription = stringResource(R.string.cd_key_left_parenthesis),
-                modifier = keyModifier()
+                modifier = keyModifier(),
             )
             CalculatorButton(
                 symbol = stringResource(R.string.key_right_parenthesis),
@@ -65,7 +65,7 @@ internal fun CalculatorKeypad(
                 style = CalculatorButtonStyle.ACTION,
                 contentDescription = stringResource(R.string.cd_key_right_parenthesis),
                 enabled = isCloseParenthesisEnabled,
-                modifier = keyModifier()
+                modifier = keyModifier(),
             )
             OperatorKey(CalculatorOperator.DIVIDE, onOperatorClick)
         }
@@ -94,14 +94,14 @@ internal fun CalculatorKeypad(
                 style = CalculatorButtonStyle.ACTION,
                 contentDescription = stringResource(R.string.cd_key_delete),
                 enabled = isDeleteEnabled,
-                modifier = keyModifier()
+                modifier = keyModifier(),
             )
             DigitKey(digit = 0, onDigitClick = onDigitClick)
             CalculatorButton(
                 symbol = stringResource(R.string.key_decimal_separator),
                 onClick = onDecimalClick,
                 contentDescription = stringResource(R.string.cd_key_decimal_separator),
-                modifier = keyModifier()
+                modifier = keyModifier(),
             )
             CalculatorButton(
                 symbol = stringResource(R.string.key_equals),
@@ -109,7 +109,7 @@ internal fun CalculatorKeypad(
                 style = CalculatorButtonStyle.ACCENT,
                 contentDescription = stringResource(R.string.cd_key_equals),
                 enabled = isCalculateEnabled,
-                modifier = keyModifier()
+                modifier = keyModifier(),
             )
         }
     }
@@ -122,34 +122,34 @@ private fun ColumnScope.KeyRow(content: @Composable RowScope.() -> Unit) {
             .fillMaxWidth()
             .weight(1f),
         horizontalArrangement = Arrangement.spacedBy(KeySpacing),
-        content = content
+        content = content,
     )
 }
 
 @Composable
 private fun RowScope.DigitKey(
     digit: Int,
-    onDigitClick: (Int) -> Unit
+    onDigitClick: (Int) -> Unit,
 ) {
     CalculatorButton(
         symbol = digit.toString(),
         onClick = { onDigitClick(digit) },
         style = CalculatorButtonStyle.NUMBER,
-        modifier = keyModifier()
+        modifier = keyModifier(),
     )
 }
 
 @Composable
 private fun RowScope.OperatorKey(
     operator: CalculatorOperator,
-    onOperatorClick: (CalculatorOperator) -> Unit
+    onOperatorClick: (CalculatorOperator) -> Unit,
 ) {
     CalculatorButton(
         symbol = operator.symbol.toString(),
         onClick = { onOperatorClick(operator) },
         style = CalculatorButtonStyle.OPERATOR,
         contentDescription = operator.contentDescription(),
-        modifier = keyModifier()
+        modifier = keyModifier(),
     )
 }
 
@@ -160,7 +160,7 @@ private fun CalculatorOperator.contentDescription(): String = stringResource(
         CalculatorOperator.SUBTRACT -> R.string.cd_key_subtract
         CalculatorOperator.MULTIPLY -> R.string.cd_key_multiply
         CalculatorOperator.DIVIDE -> R.string.cd_key_divide
-    }
+    },
 )
 
 private fun RowScope.keyModifier(): Modifier = Modifier
@@ -177,7 +177,7 @@ private fun CalculatorKeypadPreview() {
         PreviewKeypad(
             isDeleteEnabled = true,
             isCloseParenthesisEnabled = true,
-            isCalculateEnabled = true
+            isCalculateEnabled = true,
         )
     }
 }
@@ -190,7 +190,7 @@ private fun CalculatorKeypadEmptyStatePreview() {
         PreviewKeypad(
             isDeleteEnabled = false,
             isCloseParenthesisEnabled = false,
-            isCalculateEnabled = false
+            isCalculateEnabled = false,
         )
     }
 }
@@ -202,7 +202,7 @@ private fun CalculatorKeypadOpenGroupPreview() {
         PreviewKeypad(
             isDeleteEnabled = true,
             isCloseParenthesisEnabled = true,
-            isCalculateEnabled = false
+            isCalculateEnabled = false,
         )
     }
 }
@@ -216,7 +216,7 @@ private fun CalculatorKeypadSizePreview() {
         PreviewKeypad(
             isDeleteEnabled = true,
             isCloseParenthesisEnabled = true,
-            isCalculateEnabled = true
+            isCalculateEnabled = true,
         )
     }
 }
@@ -225,7 +225,7 @@ private fun CalculatorKeypadSizePreview() {
 private fun PreviewKeypad(
     isDeleteEnabled: Boolean,
     isCloseParenthesisEnabled: Boolean,
-    isCalculateEnabled: Boolean
+    isCalculateEnabled: Boolean,
 ) {
     CalculatorKeypad(
         onDigitClick = {},
@@ -241,6 +241,6 @@ private fun PreviewKeypad(
         isCalculateEnabled = isCalculateEnabled,
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
     )
 }

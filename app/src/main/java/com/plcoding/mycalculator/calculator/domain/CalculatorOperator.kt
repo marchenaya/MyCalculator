@@ -11,7 +11,8 @@ enum class CalculatorOperator(val symbol: Char) {
     ADD('+'),
     SUBTRACT('−'),
     MULTIPLY('×'),
-    DIVIDE('÷');
+    DIVIDE('÷'),
+    ;
 
     companion object {
         private val symbols = entries.map { it.symbol }.toSet()

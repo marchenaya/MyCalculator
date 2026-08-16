@@ -17,7 +17,7 @@ class CalculatorViewModelTest {
     fun setUp() {
         viewModel = CalculatorViewModel(
             savedStateHandle = SavedStateHandle(),
-            expressionEvaluator = NoOpExpressionEvaluator()
+            expressionEvaluator = NoOpExpressionEvaluator(),
         )
     }
 

@@ -7,17 +7,17 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.plcoding.mycalculator.calculator.domain.CalculatorOperator
-import com.plcoding.mycalculator.calculator.domain.ExpressionEvaluator
 import com.plcoding.mycalculator.calculator.domain.DefaultExpressionEvaluator
+import com.plcoding.mycalculator.calculator.domain.ExpressionEvaluator
+import java.math.BigDecimal
+import java.math.RoundingMode
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import java.math.BigDecimal
-import java.math.RoundingMode
 
 class CalculatorViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val expressionEvaluator: ExpressionEvaluator
+    private val expressionEvaluator: ExpressionEvaluator,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CalculatorState())
@@ -133,7 +133,7 @@ class CalculatorViewModel(
         _state.update {
             it.copy(
                 expression = expression,
-                result = expression.previewResult()
+                result = expression.previewResult(),
             )
         }
     }
@@ -164,7 +164,7 @@ class CalculatorViewModel(
             initializer {
                 CalculatorViewModel(
                     savedStateHandle = createSavedStateHandle(),
-                    expressionEvaluator = DefaultExpressionEvaluator()
+                    expressionEvaluator = DefaultExpressionEvaluator(),
                 )
             }
         }

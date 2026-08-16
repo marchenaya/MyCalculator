@@ -23,7 +23,7 @@ private val DarkColorScheme = darkColorScheme(
     onSurface = DarkOnSurface,
     onSurfaceVariant = DarkOnSurfaceVariant,
     surfaceContainer = DarkSurfaceContainer,
-    surfaceContainerHighest = DarkSurfaceContainerHighest
+    surfaceContainerHighest = DarkSurfaceContainerHighest,
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -39,7 +39,7 @@ private val LightColorScheme = lightColorScheme(
     onSurface = LightOnSurface,
     onSurfaceVariant = LightOnSurfaceVariant,
     surfaceContainer = LightSurfaceContainer,
-    surfaceContainerHighest = LightSurfaceContainerHighest
+    surfaceContainerHighest = LightSurfaceContainerHighest,
 )
 
 @Composable
@@ -47,7 +47,7 @@ fun MyCalculatorTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Off by default: the calculator keys rely on the custom palette to stay readable.
     dynamicColor: Boolean = false,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -62,6 +62,6 @@ fun MyCalculatorTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
+        content = content,
     )
 }
