@@ -8,7 +8,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.plcoding.mycalculator.calculator.domain.CalculatorOperator
 import com.plcoding.mycalculator.calculator.domain.ExpressionEvaluator
-import com.plcoding.mycalculator.calculator.domain.NoOpExpressionEvaluator
+import com.plcoding.mycalculator.calculator.domain.DefaultExpressionEvaluator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -164,7 +164,7 @@ class CalculatorViewModel(
             initializer {
                 CalculatorViewModel(
                     savedStateHandle = createSavedStateHandle(),
-                    expressionEvaluator = NoOpExpressionEvaluator()
+                    expressionEvaluator = DefaultExpressionEvaluator()
                 )
             }
         }
