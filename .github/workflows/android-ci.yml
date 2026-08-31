@@ -81,7 +81,7 @@ jobs:
         run: ./gradlew testDebugUnitTest
 
       - name: Upload artifacts
-        uses: actions/upload-artifacts@v7
+        uses: actions/upload-artifact@v7
         with:
           name: unit-test-results
           path: '**/build/test-results/**/*.xml'
